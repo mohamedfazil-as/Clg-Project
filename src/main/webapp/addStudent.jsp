@@ -147,10 +147,22 @@
                 <label for="dob">Date of Birth</label>
                 <input type="date" id="dob" name="dob" required>
             </div>
-            <div class="form-group">
+          <!--   <div class="form-group">
                 <label for="gender">Gender</label>
-                <input type="text" id="gender" name="gender" required>
+                <input type="radiobutton" id="gender" name="gender" required>
+            </div> -->
+            
+            <div class="form-group">
+            <input type="radio" class="btn-check" name="gender" id="male" autocomplete="off" checked>
+             <label class="btn btn-secondary" for="male">Male</label>
+
+             <input type="radio" class="btn-check" name="gender" id="female" autocomplete="off">
+             <label class="btn btn-secondary" for="female">Female</label>
+
+               <input type="radio" class="btn-check" name="gender" id="other" autocomplete="off" >
+               <label class="btn btn-secondary" for="other">Other</label>
             </div>
+            
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
