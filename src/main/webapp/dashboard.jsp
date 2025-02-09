@@ -17,6 +17,9 @@
         <div class="col-md-6">
             <a href="viewStudents.jsp" class="btn btn-info btn-lg w-100 mb-2">📋 View All Students</a>
         </div>
+         <div class="col-md-6">
+            <a href="course.jsp" class="btn btn-info btn-lg w-100 mb-2">🎓 Course Registration</a>
+        </div>
         <div class="col-md-6">
             <a href="LogoutServlet" class="btn btn-danger btn-lg w-100 mb-2">🚪 Logout</a>
         </div>
