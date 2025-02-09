@@ -160,7 +160,7 @@
              <label class="btn btn-secondary" for="female">Female</label>
 
                <input type="radio" class="btn-check" name="gender" id="other" autocomplete="off" >
-               <label class="btn btn-secondary" for="other">Other</label>
+               <label class="btn btn-secondary" for="other">Others</label>
             </div>
             
             <div class="form-group">
