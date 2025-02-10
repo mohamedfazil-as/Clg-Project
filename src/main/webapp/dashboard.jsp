@@ -21,6 +21,9 @@
             <a href="course.jsp" class="btn btn-info btn-lg w-100 mb-2">🎓 Course Registration</a>
         </div>
         <div class="col-md-6">
+            <a href="subject.jsp" class="btn btn-primary btn-lg w-100 mb-2">📖 Subject</a>
+        </div>
+        <div class="col-md-6">
             <a href="LogoutServlet" class="btn btn-danger btn-lg w-100 mb-2">🚪 Logout</a>
         </div>
     </div>
