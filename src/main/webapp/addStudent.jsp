@@ -23,14 +23,14 @@
         .form-container {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: left;
             flex-direction: column;
             background-color: white;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             padding: 40px;
             border-radius: 8px;
             width: 100%;
-            max-width: 400px;
+            max-width: 1000px;
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -138,30 +138,63 @@
             <h3>Add Student</h3>
         </div>
         <form action="AddStudentServlet" method="post">
-        		
+        	
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
+                <label for="enroll_id">Enrollment Id</label>
+                <input type="text" id="enroll_id" name="enroll_id" required>
+            </div>
+            <div class="form-group">
+                <label for="course_code">Course Code</label>
+                <input type="text" id="course_code" name="course_code" required>
+            </div>
+            
+            <div class="form-group">
                 <label for="dob">Date of Birth</label>
                 <input type="date" id="dob" name="dob" required>
             </div>
-          <!--   <div class="form-group">
-                <label for="gender">Gender</label>
-                <input type="radiobutton" id="gender" name="gender" required>
-            </div> -->
-            
+          
+             <div class="form-group">
+        <label class="control-label">Gender</label>
+        <div class="">
+            <label class="radio-inline"> <input type="radio" name="gender" id="gender" value="Male" checked> Male </label>
+            <label class="radio-inline"> <input type="radio" name="gender" id="gender" value="Female"> Female </label>
+            <label class="radio-inline"> <input type="radio" name="gender" id="gender" value="Others" > Others </label>
+        </div>
+    </div>
+    
+       <div class="form-group">
+        <select id ="blood_group" name="blood_group" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
+            <option selected>Select Blood Group</option>
+            <option value="A Positive">A Positive</option>
+            <option value="A Negative">A Negative</option>
+            <option value="B Positive">B Positive</option>
+            <option value="B Negative">B Negative</option>
+            <option value="AB Positive">AB Positive</option>
+            <option value="AB Negative">AB Negative</option>
+            <option value="O Positive">O Positive</option>
+            <option value="O Negative">O Negative</option>
+            <option value="Unknown"> Unknown</option>
+  
+</select>
+</div>
+           
             <div class="form-group">
-            <input type="radio" class="btn-check" name="gender" id="male" autocomplete="off" checked>
-             <label class="btn btn-secondary" for="male">Male</label>
-
-             <input type="radio" class="btn-check" name="gender" id="female" autocomplete="off">
-             <label class="btn btn-secondary" for="female">Female</label>
-
-               <input type="radio" class="btn-check" name="gender" id="other" autocomplete="off" >
-               <label class="btn btn-secondary" for="other">Others</label>
+                <label for="father_name">Father Name </label>
+                <input type="text" id="father_name" name="father_name" required>
             </div>
+            <div class="form-group">
+                <label for="mother_name">Mother Name </label>
+                <input type="text" id="mother_name" name="mother_name" required>
+            </div>
+             <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            
             
             <div class="form-group">
                 <label for="email">Email</label>
@@ -171,12 +204,15 @@
                 <label for="mobile">Mobile</label>
                 <input type="text" id="mobile" name="mobile" required>
             </div>
+            
+
              
             <button type="submit" class="btn-submit">Add Student</button>
             <a href="dashboard.jsp" class="btn btn-primary back-link">Back to Dashboard</a>
             
         </form>
     </div>
+   
 
 </body>
 </html>

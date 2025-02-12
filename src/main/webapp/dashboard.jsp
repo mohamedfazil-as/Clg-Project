@@ -9,16 +9,13 @@
     <h3>Welcome, <%= session.getAttribute("username") %>!</h3>
     <div class="row mt-4">
         <div class="col-md-6">
-            <a href="addStudent.jsp" class="btn btn-success btn-lg w-100 mb-2">➕ Add New Student</a>
+            <a href="student.jsp" class="btn btn-success btn-lg w-100 mb-2">Student</a>
         </div>
         <div class="col-md-6">
             <a href="searchStudent.jsp" class="btn btn-primary btn-lg w-100 mb-2">🔍 Search Student</a>
         </div>
-        <div class="col-md-6">
-            <a href="viewStudents.jsp" class="btn btn-info btn-lg w-100 mb-2">📋 View All Students</a>
-        </div>
          <div class="col-md-6">
-            <a href="course.jsp" class="btn btn-info btn-lg w-100 mb-2">🎓 Course Registration</a>
+            <a href="course.jsp" class="btn btn-info btn-lg w-100 mb-2">🎓 Course </a>
         </div>
         <div class="col-md-6">
             <a href="subject.jsp" class="btn btn-primary btn-lg w-100 mb-2">📖 Subject</a>

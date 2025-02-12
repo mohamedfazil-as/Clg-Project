@@ -25,12 +25,20 @@ public class AddStudentServlet extends HttpServlet {
         PreparedStatement ps = null;
     	try {
              conn = DBConnection.getConnection();
-             ps = conn.prepareStatement("INSERT INTO students(name, dob, gender, email, mobile) VALUES (?, ?, ?, ?, ?)");
+             ps = conn.prepareStatement("INSERT INTO students(name, dob, gender, email, mobile,enroll_id,course_code,blood_group,father_name,mother_name,address) VALUES (?, ?, ?, ?, ?,?,?,?,?,?,?)");
             ps.setString(1, request.getParameter("name"));
             ps.setString(2, dob);
             ps.setString(3, request.getParameter("gender"));
             ps.setString(4, request.getParameter("email"));
             ps.setString(5, request.getParameter("mobile"));
+            ps.setString(6, request.getParameter("enroll_id"));
+            ps.setString(7, request.getParameter("course_code"));
+            ps.setString(8, request.getParameter("blood_group"));
+            ps.setString(9, request.getParameter("father_name"));
+            ps.setString(10, request.getParameter("mother_name"));
+            ps.setString(11, request.getParameter("address"));
+            
+            
            
             
             
@@ -40,7 +48,7 @@ public class AddStudentServlet extends HttpServlet {
                 ps.setDate(2, java.sql.Date.valueOf(dob)); // Convert String to SQL Date
             }
             ps.executeUpdate();
-            response.sendRedirect("viewStudents.jsp");
+            response.sendRedirect("student.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

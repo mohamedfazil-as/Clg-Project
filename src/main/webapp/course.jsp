@@ -32,7 +32,7 @@
         <tbody>
           <% Connection  conn =  DBConnection.getConnection();
           PreparedStatement ps = conn.prepareStatement("SELECT * from course ");
-          ResultSet rs  = ps.executeQuery() ;
+          ResultSet rs  = ps.executeQuery() ; 
           while(rs.next()) {%>
           <tr>
             <td><%=rs.getString("coursecode") %></td>
@@ -52,6 +52,7 @@
         
         </tbody>
 </table>
+  <a href="dashboard.jsp" class="btn btn-primary">Back to Dashboard</a>
 
 </body>
 </html>

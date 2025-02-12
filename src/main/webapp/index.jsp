@@ -52,7 +52,7 @@
 <body>
     <div class="card">
         
-        <h2 class="text-center mb-4">Student Portal</h2>
+        <h2 class="text-center mb-4">Admin Portal</h2>
         
         <!-- Error Message Section -->
         <%

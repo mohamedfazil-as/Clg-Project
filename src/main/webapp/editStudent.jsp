@@ -66,11 +66,22 @@ h2 {
 						required>
 				</div>
 
-				<div class="mb-3">
+	      	<div class="mb-3">
 					<label for="gender" class="form-label">Gender</label> <input
 						type="text" class="form-control" name="gender"
 						value="<%=rs.getString("gender")%>" required>
-				</div>
+				</div> 
+				
+        <!--    <div class="form-group">
+        <label class="control-label">Gender</label>
+        <div class="">
+            <label class="radio-inline"> <input type="radio" name="gender" id="gender" value="Male" > Male </label>
+            <label class="radio-inline"> <input type="radio" name="gender" id="gender" value="Female"> Female </label>
+            <label class="radio-inline"> <input type="radio" name="gender" id="gender" value="Others" > Others </label>
+          
+        </div>
+    </div>  -->  
+				
 
 				<div class="mb-3">
 					<label for="email" class="form-label">Email</label> <input
@@ -83,6 +94,40 @@ h2 {
 						type="text" class="form-control" name="mobile"
 						value="<%=rs.getString("mobile")%>" required>
 				</div>
+				<div class="mb-3">
+					<label for="blood_group" class="form-label">Blood Group</label> <input
+						type="text" class="form-control" name="blood_group"
+						value="<%= rs.getString("blood_group") %>" required>
+				</div>
+				<div class="mb-3">
+					<label for="father_name" class="form-label">Father Name </label> <input
+						type="text" class="form-control" name="father_name"
+						value="<%= rs.getString("father_name") %>" required>
+				</div>
+				<div class="mb-3">
+					<label for="mother_name" class="form-label">Mother Name </label> <input
+						type="text" class="form-control" name="mother_name"
+						value="<%= rs.getString("mother_name") %>" required>
+				</div>
+				<div class="mb-3">
+					<label for="address" class="form-label">Address </label> <input
+						type="text" class="form-control" name="address"
+						value="<%= rs.getString("address") %>" required>
+				</div>
+				<div class="mb-3">
+					<label for="enroll_id" class="form-label">Enrollment Id </label> <input
+						type="text" class="form-control" name="enroll_id"
+						value="<%= rs.getString("enroll_id") %>" required>
+				</div>
+				<div class="mb-3">
+					<label for="course_code" class="form-label">Course Code </label> <input
+						type="text" class="form-control" name="course_code"
+						value="<%= rs.getString("course_code") %>" required>
+				</div>
+				
+				
+				
+				
 
 				<button type="submit" class="btn btn-primary">Update</button>
 			</form>
