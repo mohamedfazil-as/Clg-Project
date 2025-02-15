@@ -1,4 +1,4 @@
-package org.studentservlet;
+package org.student.mgmt.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

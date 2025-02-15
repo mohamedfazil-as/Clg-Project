@@ -1,7 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="com.studentmanagement.DBConnection"%>
+<%@page import="org.student.mgmt.db.DBConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html lang="en">
 <head>
@@ -119,11 +119,17 @@ h2 {
 						type="text" class="form-control" name="enroll_id"
 						value="<%= rs.getString("enroll_id") %>" required>
 				</div>
-				<div class="mb-3">
+				 <!--  <div class="mb-3">
 					<label for="course_code" class="form-label">Course Code </label> <input
 						type="text" class="form-control" name="course_code"
 						value="<%= rs.getString("course_code") %>" required>
-				</div>
+				</div> -->
+				<div class="mb-3">
+                  <label for="course_code" class="form-label">Course Code</label>
+                   <input type="text" class="form-control" name="course_code" 
+                      value="<%= rs.getString("course_code") %>" readonly>
+                       </div>
+				
 				
 				
 				

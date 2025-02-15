@@ -1,4 +1,4 @@
-package org.studentservlet;
+package org.student.mgmt.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.studentmanagement.DBConnection;
+import org.student.mgmt.db.DBConnection;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {

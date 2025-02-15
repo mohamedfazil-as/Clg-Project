@@ -1,4 +1,4 @@
-package org.studentservlet;
+package org.student.mgmt.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.studentmanagement.DBConnection;
+import org.student.mgmt.db.DBConnection;
 
 @WebServlet("/DeleteStudentServlet")
 public class DeleteStudentServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class DeleteStudentServlet extends HttpServlet {
             PreparedStatement ps = conn.prepareStatement("DELETE FROM students WHERE id=?");
             ps.setInt(1, Integer.parseInt(request.getParameter("id")));
             ps.executeUpdate();
-            response.sendRedirect("viewStudents.jsp");
+            response.sendRedirect("student.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

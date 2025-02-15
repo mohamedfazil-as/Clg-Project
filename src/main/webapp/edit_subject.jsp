@@ -1,7 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="com.studentmanagement.DBConnection"%>
+<%@page import="org.student.mgmt.db.DBConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html lang="en">
 <head>

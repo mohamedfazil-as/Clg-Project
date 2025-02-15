@@ -23,14 +23,14 @@
         .form-container {
             display: flex;
             justify-content: center;
-            align-items: left;
+            align-items: center;
             flex-direction: column;
             background-color: white;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             padding: 40px;
             border-radius: 8px;
             width: 100%;
-            max-width: 1000px;
+            max-width: 600px;
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -147,10 +147,40 @@
                 <label for="enroll_id">Enrollment Id</label>
                 <input type="text" id="enroll_id" name="enroll_id" required>
             </div>
-            <div class="form-group">
+          <!--   <div class="form-group">
                 <label for="course_code">Course Code</label>
                 <input type="text" id="course_code" name="course_code" required>
-            </div>
+            </div> --> 
+            <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.sql.*" %>
+
+<div class="form-group">
+    <label for="course_code">Course Code</label>
+    <select id="course_code" name="course_code" class="form-control" required>
+        <option value="">Select Course Code</option>
+        <%
+            try {
+                // Database connection
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_management", "root", "admin123");
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT coursecode FROM course");
+
+                // Populate the dropdown dynamically
+                while (rs.next()) {
+                    String courseCode = rs.getString("coursecode");
+        %>
+                    <option value="<%= courseCode %>"><%= courseCode %></option>
+        <%
+                }
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        %>
+    </select>
+</div>
+            
             
             <div class="form-group">
                 <label for="dob">Date of Birth</label>
