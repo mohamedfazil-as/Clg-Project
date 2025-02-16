@@ -1,135 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Course</title>
+    <title>Add Mark</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/studentmanage.css">
 
     <style>
-        /* General body styling */
-        body {
-            background-color: #f1f1f1;
-            font-family: 'Arial', sans-serif;
-            padding: 50px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        /* Flexbox Container for form */
-        .form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: white;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 400px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        /* Input field styling */
-        .form-group {
-            margin-bottom: 20px;
-            width: 100%;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .form-group input:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-        }
-
-        /* Label styling */
-        .form-group label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* Button styling */
-        .btn-submit {
-            background-color: #007bff;
-            color: white;
-            padding: 12px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease-in-out;
-            animation: buttonBounce 0.5s infinite alternate;
-        }
-
-        .btn-submit:hover {
-            background-color: #0056b3;
-        }
-
-        /* Form Header */
-        .form-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .form-header h3 {
-            color: #007bff;
-            font-size: 24px;
-        }
-
-        /* Fade-In Animation */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Button Bounce Animation */
-        @keyframes buttonBounce {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-10px);
-            }
-        }
-        /* Back to Dashboard Link at the bottom-left */
-.back-link {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    font-size: 14px; /* Small text size */
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.back-link:hover {
-    background-color: #0056b3;
-}
+     
         
     </style>
+     <script>
+        function updateSubjectDetails() {
+            // Get selected option
+            var select = document.getElementById("subjectcode");
+            var selectedOption = select.options[select.selectedIndex];
+
+            // Get data attributes
+            var subjectName = selectedOption.getAttribute("data-name");
+            var credit = selectedOption.getAttribute("data-credit");
+            var part = selectedOption.getAttribute("data-part");
+
+            // Populate input fields
+            //subject_name
+//subject_part
+//subject_tot
+//subject_credit
+//subject_gradepoint
+//grade
+//result
+//cia_mark
+//se_mark
+//subject_tot
+            document.getElementById("subject_name").value = subjectName || "";
+            document.getElementById("subject_credit").value = credit ;
+            document.getElementById("subject_part").value = part ;
+            
+        }
+        function calculateMark(){
+         var ciaMark = document.getElementById("cia_mark").value;
+         var seMark = document.getElementById("se_mark").value;
+         
+         var intCiaMark = parseInt(ciaMark) ;
+         var intSeMark = parseInt(seMark) ;
+         
+         if(isNaN(intCiaMark)||isNaN(intSeMark)) {
+         }else {
+        	  var subTot = intCiaMark+intSeMark;
+        	    document.getElementById("subject_tot").value = subTot  ;
+         }
+         var resultData = calculateGradeAndResult(subTot);
+
+         // Populate grade and result fields
+         document.getElementById("grade").value = resultData.grade;
+         document.getElementById("subject_gradepoint").value = resultData.cgpa;
+         document.getElementById("result").value = resultData.result;
+       }
+        function calculateGradeAndResult(subTot) {
+            // Convert subTot (out of 100) to CGPA (out of 10)
+            let cgpa = (subTot * 10) / 100;
+            let grade, classification, result;
+
+            // Determine Grade and Classification based on CGPA
+            if (cgpa >= 9.5 && cgpa <= 10) {
+                grade = "O+";
+                
+            } else if (cgpa >= 9.0) {
+                grade = "O";
+              
+            } else if (cgpa >= 8.5) {
+                grade = "D++";
+               
+            } else if (cgpa >= 8.0) {
+                grade = "D+";
+               
+            } else if (cgpa >= 7.5) {
+                grade = "D";
+              
+            } else if (cgpa >= 7.0) {
+                grade = "A++";
+              
+            } else if (cgpa >= 6.5) {
+                grade = "A+";
+                
+            } else if (cgpa >= 6.0) {
+                grade = "A";
+             
+            } else if (cgpa >= 5.5) {
+                grade = "B+";
+                
+            } else if (cgpa >= 5.0) {
+                grade = "B";
+             
+            } else if (cgpa >= 4.5) {
+                grade = "C+";
+            
+            } else if (cgpa >= 4.0) {
+                grade = "U";
+              
+            } else {
+                grade = "U";
+               
+            }
+
+            // Determine Pass or Fail
+            result = (cgpa >= 5.0) ? "P" : "F";
+
+            return {
+                subTot,
+                cgpa: cgpa.toFixed(1), // Format to 1 decimal place
+                grade,
+                classification,
+                result
+            };
+        }
+
+    </script>
 </head>
 <body>
 
@@ -166,39 +154,33 @@
 </div>
 
          
-             <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.sql.*" %>
 
 <div class="form-group">
     <label for="subjectcode">Subject Code</label>
-    <select id="subjectcode" name="subjectcode" class="form-control" required>
+    <select id="subjectcode" name="subjectcode" class="form-control" onchange="updateSubjectDetails()" required>
         <option value="">Select Subject Code</option>
-        <%
-            try {
-                // Database connection
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_management", "root", "admin123");
-                Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT subjectcode FROM subjects");
-
-                // Populate the dropdown dynamically
-                while (rs.next()) {
-                    String subjectcode = rs.getString("subjectcode");
-        %>
-                    <option value="<%= subjectcode %>"><%= subjectcode %></option>
-        <%
-                }
-                con.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        %>
-    </select>
+        <c:forEach items="${subjectList}" var="subject">
+          <option value="${subject.subjectCode}"  
+                data-name="${subject.subjectName}" 
+                data-credit="${subject.credit}" 
+                data-part="${subject.partNo}">
+                ${subject.subjectCode}
+            
+          </option>
+   
+</c:forEach>
+ </select>
+        
+        
 </div>
        
             <div class="form-group">
-                <label for="subjectname">Subject Name</label>
-                <input type="text" id="subjectname" name="subjectname" required>
+                <label for="subject_name">Subject Name</label>
+                <input type="text" id="subject_name" name="subject_name" readonly>
+            </div>
+            <div class="form-group">
+                <label for="subject_part">Part No </label>
+                <input type="text" id="subject_part" name="subject_part" readonly>
             </div>
        
        
@@ -209,31 +191,31 @@
             </div> 
              <div class="form-group">
                 <label for="cia_mark">CIA MARK </label>
-                <input type="text" id="cia_mark" name="cia_mark" required>
+                <input type="text" id="cia_mark" name="cia_mark"  onchange="calculateMark()" required>
             </div>
              <div class="form-group">
                 <label for="se_mark">SEMSTER MARK </label>
-                <input type="text" id="se_mark" name="se_mark" required>
+                <input type="text" id="se_mark" name="se_mark"  onchange="calculateMark()" required>
             </div>
              <div class="form-group">
                 <label for="subject_tot">Total </label>
-                <input type="text" id="subject_tot" name="subject_tot" required>
-          <!--   </div>
+                <input type="text" id="subject_tot" name="subject_tot" readonly>
+             </div>
               <div class="form-group">
-                <label for="subject_credits">Credits </label>
-                <input type="text" id="subject_credits" name="subject_credits" required>
-            </div> --> 
+                <label for="subject_credit">Credit </label>
+                <input type="text" id="subject_credit" name="subject_credit" readonly>
+            </div>  
             <div class="form-group">
                 <label for="subject_gradepoint">Grade Point </label>
-                <input type="text" id="subject_gradepoint" name="subject_gradepoint" required>
+                <input type="text" id="subject_gradepoint" name="subject_gradepoint" readonly>
             </div>
             <div class="form-group">
                 <label for="grade">Grade  </label>
-                <input type="text" id="grade" name="grade" required>
+                <input type="text" id="grade" name="grade" readonly>
             </div>
              <div class="form-group">
                 <label for="result">Result  </label>
-                <input type="text" id="result" name="result" required>
+                <input type="text" id="result" name="result"  readonly>
             </div>
             
             

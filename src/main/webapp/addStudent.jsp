@@ -15,7 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+           /* height: 100vh; */
             margin: 0;
         }
 
@@ -30,7 +30,7 @@
             padding: 40px;
             border-radius: 8px;
             width: 100%;
-            max-width: 600px;
+            max-width: 90%;
             animation: fadeIn 1s ease-in-out;
         }
 

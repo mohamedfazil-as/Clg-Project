@@ -34,9 +34,9 @@
                 <td><%= rs.getString("email") %></td>
                 <td><%= rs.getString("mobile") %></td>
                 <td><%= rs.getString("blood_group") %></td>
-              <!--   <td><%= rs.getString("father_name") %></td>
+                <td><%= rs.getString("father_name") %></td>
                 <td><%= rs.getString("mother_name") %></td>
-                <td><%= rs.getString("address") %></td> --> 
+                <td><%= rs.getString("address") %></td> 
                 <td><%= rs.getString("enroll_id") %></td>
                 <td><%= rs.getString("course_code") %></td>
                 
@@ -44,6 +44,7 @@
                 <td>
                     <a href="editStudent.jsp?id=<%= rs.getInt("id") %>" class="btn btn-warning btn-sm">Edit</a>
                     <a href="DeleteStudentServlet?id=<%= rs.getInt("id") %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a href="MarkSearchServlet?enroll_id=<%= rs.getString("enroll_id") %>" class="btn btn-primary btn-sm">Mark</a>
                 </td>
             </tr>
             <% } %>

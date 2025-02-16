@@ -2,54 +2,59 @@ package org.student.mgmt.model;
 
 public class Subject {
 	// subjectcode, subjectname, partno, cia_markmax, se_markmax, credits
-	private String SubjectCode;
-	private String SubjectName;
-	private String PartNo ;
-	private Integer Cia_Markmax;
-	private Integer Se_Markmax;
-	private Integer Credits;
+	private String subjectCode;
+	private String subjectName;
+	private String partNo ;
+	private Integer cia_Markmax;
+	private Integer se_Markmax;
+	private Integer totalMaxMark;
+	public Integer getTotalMaxMark() {
+		return (getCia_Markmax()+getSe_Markmax());
+	}
+	
+	private Integer credit;
 	public String getSubjectCode() {
-		return SubjectCode;
+		return subjectCode;
 	}
 	public void setSubjectCode(String subjectCode) {
-		SubjectCode = subjectCode;
+		this.subjectCode = subjectCode;
 	}
 	public String getSubjectName() {
-		return SubjectName;
+		return subjectName;
 	}
 	public void setSubjectName(String subjectName) {
-		SubjectName = subjectName;
+		this.subjectName = subjectName;
 	}
 	public String getPartNo() {
-		return PartNo;
+		return partNo;
 	}
 	public void setPartNo(String partNo) {
-		PartNo = partNo;
+		this.partNo = partNo;
 	}
 	public Integer getCia_Markmax() {
-		return Cia_Markmax;
+		return cia_Markmax;
 	}
 	public void setCia_Markmax(Integer cia_Markmax) {
-		Cia_Markmax = cia_Markmax;
+		this.cia_Markmax = cia_Markmax;
 	}
 	public Integer getSe_Markmax() {
-		return Se_Markmax;
+		return se_Markmax;
 	}
 	public void setSe_Markmax(Integer se_Markmax) {
-		Se_Markmax = se_Markmax;
+		this.se_Markmax = se_Markmax;
 	}
-	public Integer getCredits() {
-		return Credits;
+	
+	public Integer getCredit() {
+		return credit;
 	}
-	public void setCredits(Integer credits) {
-		Credits = credits;
+	public void setCredit(Integer credit) {
+		this.credit = credit;
 	}
 	@Override
 	public String toString() {
-		return "Subject [SubjectCode=" + SubjectCode + ", SubjectName=" + SubjectName + ", PartNo=" + PartNo
-				+ ", Cia_Markmax=" + Cia_Markmax + ", Se_Markmax=" + Se_Markmax + ", Credits=" + Credits + "]";
+		return "Subject [subjectCode=" + subjectCode + ", subjectName=" + subjectName + ", partNo=" + partNo
+				+ ", cia_Markmax=" + cia_Markmax + ", se_Markmax=" + se_Markmax + ", credit=" + credit + "]";
 	}
-    
-	
+
 
 }

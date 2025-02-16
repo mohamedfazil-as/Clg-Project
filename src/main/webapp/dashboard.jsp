@@ -9,7 +9,7 @@
     <h3>Welcome, <%= session.getAttribute("username") %>!</h3>
     <div class="row mt-4">
         <div class="col-md-6">
-            <a href="student.jsp" class="btn btn-success btn-lg w-100 mb-2">Student</a>
+            <a href="student.jsp" class="btn btn-success btn-lg w-100 mb-2">➕ Student</a>
         </div>
         <div class="col-md-6">
             <a href="searchStudent.jsp" class="btn btn-primary btn-lg w-100 mb-2">🔍 Search Student</a>
@@ -19,6 +19,9 @@
         </div>
         <div class="col-md-6">
             <a href="subject.jsp" class="btn btn-primary btn-lg w-100 mb-2">📖 Subject</a>
+        </div>
+         <div class="col-md-6">
+            <a href="searchMark.jsp" class="btn btn-primary btn-lg w-100 mb-2"> ✓ Mark </a>
         </div>
         <div class="col-md-6">
             <a href="LogoutServlet" class="btn btn-danger btn-lg w-100 mb-2">🚪 Logout</a>

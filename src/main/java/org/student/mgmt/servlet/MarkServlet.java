@@ -21,29 +21,31 @@ public class MarkServlet extends HttpServlet {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        List<Subject> subjectList = new ArrayList<>();
+     
 
         try {
-            // Get DB connection
+        	   List<Subject> subjectList = new ArrayList<>();
+           
             conn = DBConnection.getConnection();
 
-            // Prepare and execute query
-            ps = conn.prepareStatement("SELECT subjectcode, partno, credits FROM subjects");
+         
+            ps = conn.prepareStatement("SELECT subjectcode,subjectname, partno, credit FROM subjects");
             rs = ps.executeQuery();
 
-            // Process result set
+           
             while (rs.next()) {
                 Subject subject = new Subject();
                 subject.setSubjectCode(rs.getString("subjectcode"));
+                subject.setSubjectName(rs.getString("subjectname"));
                 subject.setPartNo(rs.getString("partno"));
-                subject.setCredits(rs.getInt("credits"));
+                subject.setCredit(rs.getInt("credit"));
 
                 subjectList.add(subject);
             }
 
-            // Pass data to JSP
+          
             request.setAttribute("subjectList", subjectList);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("subjects.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("add_mark.jsp");
             dispatcher.forward(request, response);
 
         } catch (Exception e) {
@@ -51,7 +53,7 @@ public class MarkServlet extends HttpServlet {
             request.setAttribute("error", "Database error: " + e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         } finally {
-            // Close resources
+           
             try {
                 if (rs != null) rs.close();
                 if (ps != null) ps.close();

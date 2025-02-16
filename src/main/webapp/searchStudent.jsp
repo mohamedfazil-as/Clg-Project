@@ -86,7 +86,7 @@ body {
 							<label for="id">Enter Student ID</label> <input type="text"
 								class="form-control" id="id" name="id" required>
 						</div>
-						<button type="submit" class="btn-search">Search</button>
+						<button type="submit" class="btn-search">Search</button> 
 					</form>
 				</div>
 			</div>
