@@ -51,11 +51,12 @@ String examdate = request.getParameter("exam_date");
         
      
         ps.executeUpdate();
-        response.sendRedirect("test.jsp");
+        
+        response.sendRedirect("MarkSearchServlet?enroll_id=" + request.getParameter("enrollId")   );
     } catch (Exception e) {
         e.printStackTrace();
         request.setAttribute("errorMessage",e.getMessage());
-        request.setAttribute("returnpage", "add_mark.jsp");
+        request.setAttribute("returnpage", "MarkSearchServlet?enroll_id=" + request.getParameter("enrollId") );
         RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
         dispatcher.forward(request, response);
     }

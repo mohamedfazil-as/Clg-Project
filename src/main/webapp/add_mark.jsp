@@ -127,9 +127,13 @@
         </div>
         <form action="AddMarkServlet" method="post">
         	
-        	<div class="form-group">
-                <label for="studentid">Student Id</label>
-                <input type="text" id="studentid" name="studentid" required>
+        	  <div class="form-group">
+                <label for="enrollId">Enroll Id</label>
+                <input type="text" id="enrollId" name="enrollId" readonly value ="${enrollId}">
+            </div> 
+            <div class="form-group">
+               
+                <input type="text" id="studentId" name="studentId" hidden  value ="${studentId}">
             </div>
        	
       <!--      <div class="form-group">

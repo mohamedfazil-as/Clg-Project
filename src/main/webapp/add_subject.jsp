@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Course</title>
+    <title>Add Subject</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+  
     <style>
         /* General body styling */
         body {
@@ -160,6 +160,10 @@
              <div class="form-group">
                 <label for="se_markmax">SEMSTER MAX MARK </label>
                 <input type="text" id="se_markmax" name="se_markmax" required>
+            </div>
+            <div class="form-group">
+                <label for="credit">Credit </label>
+                <input type="text" id="credit" name="credit" required>
             </div>
             
             

@@ -8,55 +8,38 @@
     <title>Student Mark  Information</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/studentmanage.css">
- 
+    
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   
     <style>
-        body {
-            font-family: sans-serif;
-        }
-        .container {
-            margin-top: 20px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .student-info {
-            margin-bottom: 20px;
-        }
-        .table-bordered th, .table-bordered td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center; /* Center the text in cells */
-            vertical-align: middle; /* Center vertically */
-        }
-        .table-bordered th {
-            background-color: #f2f2f2; /* Light gray background for header */
-        }
-        .mark-entry-table {
-          width: 100%; /* Ensure table takes full width */
-          table-layout: fixed; /* For equal column widths */
-        }
-        .mark-entry-table td {
-          word-wrap: break-word; /* Prevent content from overflowing */
-        }
+       
     </style>
 </head>
 <body>
 
+ 
 <div class="form-container">
     <div class="form-header">
         <h2>Student Mark Information</h2>
+         
     </div>
-
+    <div>
+    <div class="text-end">
+ <a href="MarkServlet?enrollId=${marksheet.student.enrollId}&studentId=${marksheet.student.id}" class ="btn btn-success">Add Mark</a>
+    
+</div>
+   </div>
+   
+ 
     <div class="student-info">
         <div class="row">
             <div class="col-md-4">
-                <label for="studentId">Student ID:</label>
-                <label for="studentId">${marksheet.student.id}</label>
+                <label for="enrollId">Enroll ID:</label>
+                <label for="enrollId">${marksheet.student.enrollId}</label>
                
             </div>
+            
             <div class="col-md-4">
                 <label for="studentName">Student Name:</label>
                 <label for="studentName">${marksheet.student.name}</label>
@@ -69,8 +52,8 @@
             </div>
         </div>
     </div>
-
-
+      
+   
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -145,4 +128,5 @@
 </div>
 
 </body>
+
 </html>

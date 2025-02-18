@@ -25,12 +25,13 @@ public class AddSubjectServlet extends HttpServlet {
 	        PreparedStatement ps = null;
 		try {
             conn = DBConnection.getConnection();
-            ps = conn.prepareStatement("INSERT INTO subjects(subjectcode, subjectname, partno, cia_markmax, se_markmax) VALUES (?, ?, ?, ?,?)");
+            ps = conn.prepareStatement("INSERT INTO subjects(subjectcode, subjectname, partno, cia_markmax, se_markmax,credit) VALUES (?, ?, ?, ?,?,?)");
            ps.setString(1, request.getParameter("subjectcode"));
            ps.setString(2,  request.getParameter("subjectname") );
            ps.setString(3, request.getParameter("partno"));
            ps.setInt(4, Integer.parseInt(request.getParameter("cia_markmax")));
            ps.setInt(5, Integer.parseInt(request.getParameter("se_markmax")));
+           ps.setInt(6, Integer.parseInt(request.getParameter("credit")));
            
           
            

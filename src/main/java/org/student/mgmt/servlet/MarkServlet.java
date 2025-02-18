@@ -45,9 +45,11 @@ public class MarkServlet extends HttpServlet {
 
           
             request.setAttribute("subjectList", subjectList);
+            request.setAttribute("enrollId", request.getAttribute("enrollId"));
+            request.setAttribute("studentId", request.getAttribute("studentId"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("add_mark.jsp");
             dispatcher.forward(request, response);
-
+            response.sendRedirect("add_mark.jsp?enroll_id=" + request.getParameter("enrollId") +"studentId="+request.getAttribute("studentId")   );
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Database error: " + e.getMessage());
