@@ -27,7 +27,7 @@
         <tbody>
             <% 
             Connection conn = DBConnection.getConnection();
-			PreparedStatement ps = conn.prepareStatement("SELECT * from Students");
+			PreparedStatement ps = conn.prepareStatement("SELECT * from Students where isDeleted ='N' ");
                ResultSet rs = ps.executeQuery();
                while (rs.next()) { %>
             <tr>

@@ -62,17 +62,28 @@
             <th>II</th>
             <th>III</th>
             <th>IV</th>
-            <th>GPA</th>
+            
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <td>GPA</td>
+         <c:forEach var="part" items="${partWiseMarks}">
+         <c:if test="${part.key=='I'}">
+      <td>${part.value[0]/part.value[1]}</td>
+      
+</c:if>
+        <c:if test="${part.key=='II'}">
+      <td>${part.value[0]/part.value[1]}</td>
+</c:if>
+ <c:if test="${part.key=='III'}"> 
+      <td>${part.value[0]/part.value[1]}</td>
+</c:if>
+ <c:if test="${part.key=='IV'}">
+     <td>${part.value[0]/part.value[1]}</td>
+</c:if>
+
+    </c:forEach>
         </tr>
         </tbody>
     </table>

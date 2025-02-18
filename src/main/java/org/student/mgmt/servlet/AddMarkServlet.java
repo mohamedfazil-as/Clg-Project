@@ -35,8 +35,8 @@ String examdate = request.getParameter("exam_date");
 		try {
          conn = DBConnection.getConnection();
          ps = conn.prepareStatement("INSERT INTO marks(student_id, subject_code, semster, exam_date, cia_mark, se_mark, subject_tot, sub_gradepoint, grade, result) VALUES (?, ?, ?, ?,?,?,?,?,?,?)");
-        ps.setInt(1, Integer.parseInt(request.getParameter("studentid")));
-        ps.setString(2, request.getParameter("subjectcode"));
+        ps.setInt(1, Integer.parseInt(request.getParameter("studentId")));
+        ps.setString(2, request.getParameter("subject_code"));
         ps.setString(3,  request.getParameter("semster") );
         ps.setString(4, examdate);
         ps.setInt(5, Integer.parseInt(request.getParameter("cia_mark")));
@@ -45,12 +45,8 @@ String examdate = request.getParameter("exam_date");
         ps.setDouble(8, Double.parseDouble(request.getParameter("subject_gradepoint")));
         ps.setString(9, request.getParameter("grade"));
         ps.setString(10, request.getParameter("result"));
-       
-        
-       
-        
-     
-        ps.executeUpdate();
+                        
+          ps.executeUpdate();
         
         response.sendRedirect("MarkSearchServlet?enroll_id=" + request.getParameter("enrollId")   );
     } catch (Exception e) {

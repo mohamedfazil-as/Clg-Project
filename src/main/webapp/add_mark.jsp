@@ -15,11 +15,11 @@
      <script>
         function updateSubjectDetails() {
             // Get selected option
-            var select = document.getElementById("subjectcode");
+            var select = document.getElementById("subjectname");
             var selectedOption = select.options[select.selectedIndex];
 
             // Get data attributes
-            var subjectName = selectedOption.getAttribute("data-name");
+            var subjectCode = selectedOption.getAttribute("data-subjectCode");
             var credit = selectedOption.getAttribute("data-credit");
             var part = selectedOption.getAttribute("data-part");
 
@@ -34,7 +34,7 @@
 //cia_mark
 //se_mark
 //subject_tot
-            document.getElementById("subject_name").value = subjectName || "";
+            document.getElementById("subject_code").value = subjectCode || "";
             document.getElementById("subject_credit").value = credit ;
             document.getElementById("subject_part").value = part ;
             
@@ -128,7 +128,7 @@
         <form action="AddMarkServlet" method="post">
         	
         	  <div class="form-group">
-                <label for="enrollId">Enroll Id</label>
+                <label for="enrollId">Enroll Id  </label>
                 <input type="text" id="enrollId" name="enrollId" readonly value ="${enrollId}">
             </div> 
             <div class="form-group">
@@ -147,12 +147,12 @@
           <div class="form-group">
         <select id ="semster" name="semster" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
             <option selected>Select Semster</option>
-            <option value="Semster-I">Semster-I</option>
-            <option value="Semster-II">Semster-II</option>
-            <option value="Semster-III">Semster-III</option>
-            <option value="Semster-IV">Semster-IV</option>
-            <option value="Semster-V">Semster-V</option>
-            <option value="Semster-VI">Semster-VI</option>
+            <option value="1">Semster-I</option>
+            <option value="2">Semster-II</option>
+            <option value="3">Semster-III</option>
+            <option value="4">Semster-IV</option>
+            <option value="5">Semster-V</option>
+            <option value="6">Semster-VI</option>
              
 </select>
 </div>
@@ -160,15 +160,15 @@
          
 
 <div class="form-group">
-    <label for="subjectcode">Subject Code</label>
-    <select id="subjectcode" name="subjectcode" class="form-control" onchange="updateSubjectDetails()" required>
-        <option value="">Select Subject Code</option>
+    <label for="subjectname">Subject</label>
+    <select id="subjectname" name="subjectname" class="form-control" onchange="updateSubjectDetails()" required>
+        <option value="">Select Subject </option>
         <c:forEach items="${subjectList}" var="subject">
-          <option value="${subject.subjectCode}"  
-                data-name="${subject.subjectName}" 
+          <option value="${subject.subjectName}"  
+                data-subjectCode="${subject.subjectCode}" 
                 data-credit="${subject.credit}" 
                 data-part="${subject.partNo}">
-                ${subject.subjectCode}
+                ${subject.subjectName}
             
           </option>
    
@@ -179,8 +179,8 @@
 </div>
        
             <div class="form-group">
-                <label for="subject_name">Subject Name</label>
-                <input type="text" id="subject_name" name="subject_name" readonly>
+                <label for="subject_code">Subject Code</label>
+                <input type="text" id="subject_code" name="subject_code" readonly>
             </div>
             <div class="form-group">
                 <label for="subject_part">Part No </label>

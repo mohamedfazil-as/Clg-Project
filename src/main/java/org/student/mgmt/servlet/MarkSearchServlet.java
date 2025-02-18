@@ -6,7 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,6 +49,7 @@ public class MarkSearchServlet extends HttpServlet {
 						+ "join subjects on subjects.subjectcode = marks.subject_code "
 						+ "where "
 						+ "students.enroll_id = ?"
+						+ " order  by marks.semster,subjects.partno"
 						);
 				   ps.setString(1,  request.getParameter("enroll_id"));
 				    rs = ps.executeQuery(); 
@@ -53,6 +57,7 @@ public class MarkSearchServlet extends HttpServlet {
 				    MarkSheet marksheet = new MarkSheet();
 				   List <Mark> markList = new ArrayList<Mark>() ;
 				   List <Subject> subjectList = new ArrayList<Subject>() ;
+				   TreeMap<String, int[]> partWiseMarks = new TreeMap<>();
 				   while (rs.next()) {
 					    Student student = new Student() ;
 					    Course course   = new Course() ;
@@ -89,7 +94,13 @@ public class MarkSearchServlet extends HttpServlet {
 		           		 
 		           		mark.setSubject(subject);
 		           		markList.add(mark);
-		                
+		           		
+		           		if (!partWiseMarks.containsKey(subject.getPartNo())) {
+		                    partWiseMarks.put(subject.getPartNo(), new int[]{0, 0});
+		                }
+		                int [] data = partWiseMarks.get(subject.getPartNo());
+		                data[0] += mark.getSubjectTotal(); // Sum of marks
+		                data[1] += 1;
 		                
 		                
 		                marksheet.setStudent(student);
@@ -102,6 +113,7 @@ public class MarkSearchServlet extends HttpServlet {
 		            }
 				   
 				   request.setAttribute("marksheet", marksheet);
+				   request.setAttribute("partWiseMarks", partWiseMarks);
 		            RequestDispatcher dispatcher = request.getRequestDispatcher("view_mark.jsp");
 		            dispatcher.forward(request, response);
 			  } catch (Exception e) {
