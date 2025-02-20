@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -45,7 +47,7 @@
                 <label for="studentName">${marksheet.student.name}</label>
              
             </div>
-            <div class="col-md-4">
+            <div class="col-md-">
                 <label for="course">Course:</label>
                  <label for="course">${marksheet.course.courseName}</label>
         
@@ -107,9 +109,13 @@
             <th>Grade Point</th>
             <th>Grade</th>
             <th>Result P/F</th>
-        </tr>
+            <th>Action</th>
+            
+        
         </thead>
+        
         <tbody>
+       
         <%-- Add rows dynamically as needed --%>
            <c:forEach items="${marksheet.mark}" var="mark">
             <tr>
@@ -128,16 +134,20 @@
                         <td> ${mark.subGradePoint }</td>
                          <td>${mark.grade }</td>
                             <td> ${mark.result }</td>
-
+                            <td> 
+                            <a href="edit_mark.jsp?enrollId=${marksheet.student.enrollId}&studentId=${marksheet.student.id}&semester=${mark.semester}&subjectCode= ${mark.subject.subjectCode}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="DeleteMarkServlet?enrollId=${marksheet.student.enrollId}&studentId=${marksheet.student.id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                            </td>
    </tr>
 </c:forEach>
-           
         
         </tbody>
     </table>
-
+  <a href="student.jsp" class="btn btn-primary">Back to Student</a>
+  
+ 
 </div>
-
+   
 </body>
-
+  
 </html>

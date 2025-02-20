@@ -42,4 +42,25 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-18 21:23:20
+-- Dump completed on 2025-02-19  0:32:46
+INSERT INTO `users` (`username`, `password`, `email`) VALUES
+('arun_kumar', 'hashed_password_1', 'arun.kumar@example.com'),
+('siva_prakash', 'hashed_password_2', 'siva.prakash@example.com'),
+('karthik_rajan', 'hashed_password_3', 'karthik.rajan@example.com'),
+('deepak_mohan', 'hashed_password_4', 'deepak.mohan@example.com'),
+('muthu_krishnan', 'hashed_password_5', 'muthu.krishnan@example.com'),
+('vijay_anand', 'hashed_password_6', 'vijay.anand@example.com'),
+('priya_dharshini', 'hashed_password_7', 'priya.dharshini@example.com'),
+('divya_shree', 'hashed_password_8', 'divya.shree@example.com'),
+('naveen_kannan', 'hashed_password_9', 'naveen.kannan@example.com'),
+('hari_haran', 'hashed_password_10', 'hari.haran@example.com'),
+('rajkumar_senthil', 'hashed_password_11', 'rajkumar.senthil@example.com'),
+('sowmya_ravi', 'hashed_password_12', 'sowmya.ravi@example.com'),
+('bala_murugan', 'hashed_password_13', 'bala.murugan@example.com'),
+('keerthi_vasan', 'hashed_password_14', 'keerthi.vasan@example.com'),
+('gokul_nath', 'hashed_password_15', 'gokul.nath@example.com'),
+('hema_latha', 'hashed_password_16', 'hema.latha@example.com'),
+('senthil_kumar', 'hashed_password_17', 'senthil.kumar@example.com'),
+('saranya_meena', 'hashed_password_18', 'saranya.meena@example.com'),
+('anbu_selvan', 'hashed_password_19', 'anbu.selvan@example.com'),
+('uma_maheswari', 'hashed_password_20', 'uma.maheswari@example.com');

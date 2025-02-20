@@ -99,7 +99,7 @@ public class MarkSearchServlet extends HttpServlet {
 		                    partWiseMarks.put(subject.getPartNo(), new int[]{0, 0});
 		                }
 		                int [] data = partWiseMarks.get(subject.getPartNo());
-		                data[0] += mark.getSubjectTotal(); // Sum of marks
+		                data[0] += mark.getSubGradePoint(); // Sum of marks
 		                data[1] += 1;
 		                
 		                

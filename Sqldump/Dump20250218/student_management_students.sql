@@ -37,6 +37,7 @@ CREATE TABLE `students` (
   `enroll_date` date NOT NULL DEFAULT (curdate()),
   `completion_date` date DEFAULT NULL,
   `course_code` varchar(20) NOT NULL,
+  `isDeleted` varchar(1) DEFAULT 'N',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `enroll_id_UNIQUE` (`enroll_id`),
@@ -55,4 +56,4 @@ CREATE TABLE `students` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-18 21:23:20
+-- Dump completed on 2025-02-19  0:32:47

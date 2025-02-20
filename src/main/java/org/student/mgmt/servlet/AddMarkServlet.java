@@ -1,4 +1,3 @@
-
 package org.student.mgmt.servlet;
 
 import java.io.IOException;
@@ -35,7 +34,7 @@ String examdate = request.getParameter("exam_date");
 		try {
          conn = DBConnection.getConnection();
          ps = conn.prepareStatement("INSERT INTO marks(student_id, subject_code, semster, exam_date, cia_mark, se_mark, subject_tot, sub_gradepoint, grade, result) VALUES (?, ?, ?, ?,?,?,?,?,?,?)");
-        ps.setInt(1, Integer.parseInt(request.getParameter("studentId")));
+        ps.setInt(1, Integer.parseInt(request.getParameter("studentId")));		
         ps.setString(2, request.getParameter("subject_code"));
         ps.setString(3,  request.getParameter("semster") );
         ps.setString(4, examdate);

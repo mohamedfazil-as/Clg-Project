@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `marks`;
 CREATE TABLE `marks` (
   `student_id` int NOT NULL,
   `subject_code` varchar(20) NOT NULL,
-  `semster` varchar(15) NOT NULL,
+  `semster` int NOT NULL,
   `exam_date` date DEFAULT NULL,
   `cia_mark` int DEFAULT NULL,
   `se_mark` int DEFAULT NULL,
@@ -47,4 +47,4 @@ CREATE TABLE `marks` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-18 21:23:20
+-- Dump completed on 2025-02-19  0:32:47

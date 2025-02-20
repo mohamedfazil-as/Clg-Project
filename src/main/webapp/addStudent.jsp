@@ -77,19 +77,18 @@
     </div>
     
        <div class="form-group">
-        <select id ="blood_group" name="blood_group" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
+       <select id ="blood_group" name="blood_group" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
             <option selected>Select Blood Group</option>
-            <option value="A Positive">A Positive</option>
-            <option value="A Negative">A Negative</option>
-            <option value="B Positive">B Positive</option>
-            <option value="B Negative">B Negative</option>
-            <option value="AB Positive">AB Positive</option>
-            <option value="AB Negative">AB Negative</option>
-            <option value="O Positive">O Positive</option>
-            <option value="O Negative">O Negative</option>
-            <option value="Unknown"> Unknown</option>
-  
-</select>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="Unknown"> Unknown</option>
+    </select>
 </div>
            
             <div class="form-group">
