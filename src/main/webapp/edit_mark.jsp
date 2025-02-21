@@ -133,7 +133,7 @@
             </div> 
             <div class="form-group">
                
-                <input type="text" id="studentId" name="studentId" hidden  value ="${studentId}">
+                <input type="text" id="studentId" name="studentId" hidden  value ="${mark.studentId}">
             </div>
        	
       <!--      <div class="form-group">
@@ -145,89 +145,90 @@
                 <input type="text" id="semster" name="semster" required>
             </div>  --> 
           <div class="form-group">
-        <select id ="semster" name="semster" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
+            <label for="semster">Semster  </label>
+                <input type="text" id="semster" name="semster" readonly value ="${mark.semester}">
+   <!--     <select id ="semster" name="semster" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
             <option selected>Select Semster</option>
             <option value="1">Semster-I</option>
             <option value="2">Semster-II</option>
             <option value="3">Semster-III</option>
             <option value="4">Semster-IV</option>
             <option value="5">Semster-V</option>
-            <option value="6">Semster-VI</option>
-             
-</select>
+            <option value="6">Semster-VI</option>          
+</select> - -->
 </div>
 
          
 
 <div class="form-group">
-    <label for="subjectname">Subject</label>
-    <select id="subjectname" name="subjectname" class="form-control" onchange="updateSubjectDetails()" required>
+    <label for="subject">Subject</label>
+     <input type="text" id="subject" name="subject" readonly value ="${mark.subject.subjectCode}-${mark.subject.subjectName}">
+   <!--  <select id="subjectname" name="subjectname" class="form-control" onchange="updateSubjectDetails()" required>
         <option value="">Select Subject </option>
         <c:forEach items="${subjectList}" var="subject">
           <option value="${subject.subjectName}"  
                 data-subjectCode="${subject.subjectCode}" 
                 data-credit="${subject.credit}" 
                 data-part="${subject.partNo}">
-                ${subject.subjectName}
-            
-          </option>
-   
+                ${subject.subjectName}           
+          </option> 
 </c:forEach>
  </select>
-        
+        --> 
         
 </div>
        
-            <div class="form-group">
+           <!--  <div class="form-group">
                 <label for="subject_code">Subject Code</label>
                 <input type="text" id="subject_code" name="subject_code" readonly>
             </div>
             <div class="form-group">
                 <label for="subject_part">Part No </label>
                 <input type="text" id="subject_part" name="subject_part" readonly>
-            </div>
+            </div>   -->
        
        
             
              <div class="form-group">
                 <label for="exam_date">Exam Date </label>
-                <input type="date" id="exam_date" name="exam_date" required>
+                <input type="date" id="exam_date" name="exam_date" required  value = "${mark.examDate}">
             </div> 
              <div class="form-group">
                 <label for="cia_mark">CIA MARK </label>
-                <input type="text" id="cia_mark" name="cia_mark"  onchange="calculateMark()" required>
+                <input type="text" id="cia_mark" name="cia_mark"  onchange="calculateMark()" required value = "${mark.ciaMark}">
             </div>
              <div class="form-group">
                 <label for="se_mark">SEMSTER MARK </label>
-                <input type="text" id="se_mark" name="se_mark"  onchange="calculateMark()" required>
+                <input type="text" id="se_mark" name="se_mark"  onchange="calculateMark()" required value = "${mark.seMark}">
             </div>
              <div class="form-group">
                 <label for="subject_tot">Total </label>
-                <input type="text" id="subject_tot" name="subject_tot" readonly>
+                <input type="text" id="subject_tot" name="subject_tot" readonly value = "${mark.subjectTotal}">
              </div>
               <div class="form-group">
                 <label for="subject_credit">Credit </label>
-                <input type="text" id="subject_credit" name="subject_credit" readonly>
+                <input type="text" id="subject_credit" name="subject_credit" readonly value = "${mark.subject.credit}">
             </div>  
             <div class="form-group">
                 <label for="subject_gradepoint">Grade Point </label>
-                <input type="text" id="subject_gradepoint" name="subject_gradepoint" readonly>
+                <input type="text" id="subject_gradepoint" name="subject_gradepoint" readonly value = "${mark.subGradePoint}">
             </div>
             <div class="form-group">
                 <label for="grade">Grade  </label>
-                <input type="text" id="grade" name="grade" readonly>
+                <input type="text" id="grade" name="grade" readonly value = "${mark.grade}">
             </div>
              <div class="form-group">
                 <label for="result">Result  </label>
-                <input type="text" id="result" name="result"  readonly>
+                <input type="text" id="result" name="result"  readonly value = "${mark.result}">
             </div>
             
             
             
             <button type="submit" class="btn-submit">Update Mark</button>
-            <a href="dashboard.jsp" class="btn btn-primary back-link">Back to Dashboard</a>
+            
             
         </form>
+        <a href="MarkSearchServlet?enroll_id=${enrollId}" class="btn btn-primary back-link">Back to Student Marks</a>
     </div>
 
 </body>

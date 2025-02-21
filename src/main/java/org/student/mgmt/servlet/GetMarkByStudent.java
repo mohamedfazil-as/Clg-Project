@@ -41,31 +41,44 @@ public class GetMarkByStudent extends HttpServlet {
 	        ResultSet rs = null;
 		try {
 	             conn = DBConnection.getConnection();
-	             ps = conn.prepareStatement("select *  from  marks where student_id=? and subject_code=? and semster=?");
+	             ps = conn.prepareStatement("select  *  "
+	             		+ "from  marks "
+	             		+ "join subjects "
+	             		+ "on subjects.subjectcode = marks.subject_code "
+	             		+ "where marks.student_id=? and marks.subject_code=? and marks.semster=?");
 	            ps.setString(2, request.getParameter("subjectCode"));
 	            ps.setInt(1,Integer.parseInt(request.getParameter("studentId")));
 	            
 	            ps.setInt(3,Integer.parseInt(request.getParameter("semester")));
 	           
 	           rs=  ps.executeQuery();
-	           String subcode=null ;
+	 
 	           Mark mark = null ;
+	           Subject subject =  null ;
 	           //  student_id, subject_code, semster, exam_date, cia_mark, se_mark, subject_tot, sub_gradepoint, grade, result, isDeleted
 	           while(rs.next()) {
 	        	   mark = new Mark() ;
-	            	
-	            	mark.setStudentId(rs.getInt("student_id")) ;
-	            	subcode=rs.getString("subject_code");
+	        	   subject =  new  Subject() ;
+	            	subject.setSubjectCode(rs.getString("subject_code")) ;
+	            	subject.setSubjectName(rs.getString("subjectname"));
+	            	subject.setCredit(rs.getInt("credit"));
+	            	subject.setPartNo(rs.getString("partno"));
+	            	mark.setSubject(subject) ;
+	            	mark.setStudentId(rs.getInt("student_id")) ;	            
 	            	mark.setSemester(rs.getString("semster"));
 	            	mark.setExamDate(rs.getString("exam_date"));
 	            	mark.setCiaMark(rs.getInt("cia_mark"));
 	            	mark.setSeMark(rs.getInt("se_mark")) ;
 	            	mark.setSubjectTotal(rs.getInt("subject_tot")) ;
+	            	mark.setSubGradePoint(rs.getDouble("sub_gradepoint")) ;
+	            	mark.setGrade(rs.getString("grade")) ;
+	            	mark.setResult(rs.getString("result")) ;
+	            	
 	          
 	            	
 	            }
 	           request.setAttribute("mark", mark);
-			   request.setAttribute("subcode", subcode);
+			  
 			   request.setAttribute("enrollId",  request.getParameter("enrollId"));
 			  
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("edit_mark.jsp");

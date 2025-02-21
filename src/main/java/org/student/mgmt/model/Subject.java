@@ -8,11 +8,12 @@ public class Subject {
 	private Integer cia_Markmax;
 	private Integer se_Markmax;
 	private Integer totalMaxMark;
+	private Integer credit;
 	public Integer getTotalMaxMark() {
 		return (getCia_Markmax()+getSe_Markmax());
 	}
 	
-	private Integer credit;
+	
 	public String getSubjectCode() {
 		return subjectCode;
 	}

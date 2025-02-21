@@ -135,7 +135,7 @@
                          <td>${mark.grade }</td>
                             <td> ${mark.result }</td>
                             <td> 
-                            <a href="edit_mark.jsp?enrollId=${marksheet.student.enrollId}&studentId=${marksheet.student.id}&semester=${mark.semester}&subjectCode= ${mark.subject.subjectCode}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="GetMarkByStudent?enrollId=${marksheet.student.enrollId}&studentId=${marksheet.student.id}&semester=${mark.semester}&subjectCode=${mark.subject.subjectCode}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="DeleteMarkServlet?enrollId=${marksheet.student.enrollId}&studentId=${marksheet.student.id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
    </tr>
