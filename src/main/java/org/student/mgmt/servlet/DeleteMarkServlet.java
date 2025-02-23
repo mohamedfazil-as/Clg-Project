@@ -3,6 +3,7 @@ package org.student.mgmt.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,19 +32,31 @@ public class DeleteMarkServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		 Connection conn = null;
+	        PreparedStatement ps = null;
 		try {
-            Connection conn = DBConnection.getConnection();
+             conn = DBConnection.getConnection();
            // PreparedStatement ps = conn.prepareStatement("DELETE FROM students WHERE id=?");
-            PreparedStatement ps = conn.prepareStatement("update marks set isDeleted=? WHERE student_id=?");
+             ps = conn.prepareStatement("update marks set isDeleted=? WHERE student_id=?");
             ps.setString(1,"Y");
             ps.setInt(2, Integer.parseInt(request.getParameter("studentId")));
             ps.executeUpdate();
-            response.sendRedirect("view_mark.jsp");
+            response.sendRedirect("MarkSearchServlet?enroll_id=" + request.getParameter("enrollId")   );
         } catch (Exception e) {
             e.printStackTrace();
+            request.setAttribute("error", "Database error: " + e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        } finally {
+           
+            try {
+             
+                if (ps != null) ps.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-    }
+}
 }
 	
 

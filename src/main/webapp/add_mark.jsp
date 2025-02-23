@@ -145,14 +145,14 @@
                 <input type="text" id="semster" name="semster" required>
             </div>  --> 
           <div class="form-group">
-        <select id ="semster" name="semster" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
-            <option selected>Select Semster</option>
-            <option value="1">Semster-I</option>
-            <option value="2">Semster-II</option>
-            <option value="3">Semster-III</option>
-            <option value="4">Semster-IV</option>
-            <option value="5">Semster-V</option>
-            <option value="6">Semster-VI</option>
+        <select id ="semester" name="semester" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
+            <option selected>Select Semester</option>
+            <option value="1">Semester-I</option>
+            <option value="2">Semester-II</option>
+            <option value="3">Semester-III</option>
+            <option value="4">Semester-IV</option>
+            <option value="5">Semester-V</option>
+            <option value="6">Semester-VI</option>
              
 </select>
 </div>
@@ -198,7 +198,7 @@
                 <input type="text" id="cia_mark" name="cia_mark"  onchange="calculateMark()" required>
             </div>
              <div class="form-group">
-                <label for="se_mark">SEMSTER MARK </label>
+                <label for="se_mark">SEMESTER MARK </label>
                 <input type="text" id="se_mark" name="se_mark"  onchange="calculateMark()" required>
             </div>
              <div class="form-group">
@@ -225,9 +225,10 @@
             
             
             <button type="submit" class="btn-submit">Add Mark</button>
-            <a href="dashboard.jsp" class="btn btn-primary back-link">Back to Dashboard</a>
+            
             
         </form>
+         <a href="MarkSearchServlet?enroll_id=${enrollId}" class="btn btn-primary back-link">Back to Student Marks</a>
     </div>
 
 </body>

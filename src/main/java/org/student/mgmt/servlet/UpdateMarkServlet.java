@@ -3,6 +3,7 @@ package org.student.mgmt.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,22 +32,55 @@ public class UpdateMarkServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 try {
-	            Connection conn = DBConnection.getConnection();
-	            PreparedStatement ps = conn.prepareStatement("UPDATE marks SET subject_code=?, semster=?, exam_date=?, cia_mark=?, se_mark=?, subject_tot=?, sub_gradepoint=?, grade=?, result WHERE student_id=?");
-	            ps.setString(1, request.getParameter("subject_code"));
-	            ps.setInt(2,Integer.parseInt(request.getParameter("semster")));
-	            ps.setString(3, request.getParameter("exam_date"));       
-	            ps.setInt(4,Integer.parseInt(request.getParameter("cia_mark")));
-	            ps.setInt(5,Integer.parseInt(request.getParameter("se_mark")));
-	            ps.setInt(6,Integer.parseInt(request.getParameter("subject_tot")));
-	            ps.setDouble(7, Double.parseDouble(request.getParameter("sub_gradepoint")));
-	            ps.setString(8, request.getParameter("subjectcode"));
+		Connection conn  =null ;
+        PreparedStatement ps = null; 
+String examdate = request.getParameter("exam_date");
+    	
+    	// Validate Date of Birth (avoid empty string)
+        if (examdate == null || examdate.trim().isEmpty()) {
+        	examdate = null; // Set to null so MySQL can handle it properly
+        }
+		
+        try {
+	             conn = DBConnection.getConnection();
+	             ps = conn.prepareStatement("INSERT INTO marks (student_id, subject_code, semester, exam_date, cia_mark, se_mark, subject_tot, sub_gradepoint, grade, result,isDeleted)\r\n"
+	             		+ "VALUES (?,?,?,?,?,?,?,?,?,?,?) As Newmark"
+	             		+ " ON DUPLICATE KEY UPDATE"
+	             		+ " exam_date=Newmark.exam_date,"
+	             		+ " cia_mark=Newmark.cia_mark,"
+	             		+ " se_mark=Newmark.se_mark,"
+	             		+ " subject_tot=Newmark.subject_tot,"
+	             		+ " sub_gradepoint=Newmark.sub_gradepoint," 
+	             		+ " grade=Newmark.grade,"
+	             		+ " result=Newmark.result,"
+	             		+ " isDeleted=Newmark.isDeleted;");
+	             ps.setInt(1, Integer.parseInt(request.getParameter("studentId")));		
+	             ps.setString(2, request.getParameter("subject_code"));
+	             ps.setString(3,  request.getParameter("semester") );
+	             ps.setString(4, examdate);
+	             ps.setInt(5, Integer.parseInt(request.getParameter("cia_mark")));
+	             ps.setInt(6, Integer.parseInt(request.getParameter("se_mark")));
+	             ps.setInt(7, Integer.parseInt(request.getParameter("subject_tot")));
+	             ps.setDouble(8, Double.parseDouble(request.getParameter("subject_gradepoint")));
+	             ps.setString(9, request.getParameter("grade"));
+	             ps.setString(10, request.getParameter("result"));
+	             ps.setString(11, "N");
+	                             
 	            ps.executeUpdate();
-	            response.sendRedirect("subject.jsp");
+	            response.sendRedirect("MarkSearchServlet?enroll_id=" + request.getParameter("enrollId")   );
 	        } catch (Exception e) {
 	            e.printStackTrace();
+	            request.setAttribute("error", "Database error: " + e.getMessage());
+	            request.getRequestDispatcher("error.jsp").forward(request, response);
+	        } finally {
+	           
+	            try {
+	             
+	                if (ps != null) ps.close();
+	                if (conn != null) conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
 	        }
 	}
-
 }

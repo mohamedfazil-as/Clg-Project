@@ -33,10 +33,20 @@ String examdate = request.getParameter("exam_date");
 	        PreparedStatement ps = null;
 		try {
          conn = DBConnection.getConnection();
-         ps = conn.prepareStatement("INSERT INTO marks(student_id, subject_code, semster, exam_date, cia_mark, se_mark, subject_tot, sub_gradepoint, grade, result) VALUES (?, ?, ?, ?,?,?,?,?,?,?)");
+         ps = conn.prepareStatement("INSERT INTO marks (student_id, subject_code, semester, exam_date, cia_mark, se_mark, subject_tot, sub_gradepoint, grade, result,isDeleted)\r\n"
+          		+ "VALUES (?,?,?,?,?,?,?,?,?,?,?) As Newmark"
+          		+ " ON DUPLICATE KEY UPDATE"
+          		+ " exam_date=Newmark.exam_date,"
+          		+ " cia_mark=Newmark.cia_mark,"
+          		+ " se_mark=Newmark.se_mark,"
+          		+ " subject_tot=Newmark.subject_tot,"
+          		+ " sub_gradepoint=Newmark.sub_gradepoint," 
+          		+ " grade=Newmark.grade,"
+          		+ " result=Newmark.result,"
+          		+ " isDeleted=Newmark.isDeleted;");
         ps.setInt(1, Integer.parseInt(request.getParameter("studentId")));		
         ps.setString(2, request.getParameter("subject_code"));
-        ps.setString(3,  request.getParameter("semster") );
+        ps.setString(3,  request.getParameter("semester") );
         ps.setString(4, examdate);
         ps.setInt(5, Integer.parseInt(request.getParameter("cia_mark")));
         ps.setInt(6, Integer.parseInt(request.getParameter("se_mark")));
@@ -44,6 +54,7 @@ String examdate = request.getParameter("exam_date");
         ps.setDouble(8, Double.parseDouble(request.getParameter("subject_gradepoint")));
         ps.setString(9, request.getParameter("grade"));
         ps.setString(10, request.getParameter("result"));
+        ps.setString(11, "N");
                         
           ps.executeUpdate();
         

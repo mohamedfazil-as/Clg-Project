@@ -39,9 +39,9 @@ public class MarkSearchServlet extends HttpServlet {
 		try {
 				 conn = DBConnection.getConnection();
 					ps = conn.prepareStatement("select students.id as stuid, students.name as stuname, students.enroll_id, students.course_code "
-		    			+ " ,course.coursecode,course.coursename,marks.student_id, marks.subject_code, marks.semster"
+		    			+ " ,course.coursecode,course.coursename,marks.student_id, marks.subject_code, marks.semester"
 						+ " ,marks.exam_date, marks.cia_mark, marks.se_mark, marks.subject_tot,marks.sub_gradepoint"
-						+ " ,marks.grade, marks.result,subjects.subjectcode,subjects.subjectname,subjects.partno"
+						+ " ,marks.grade, marks.result,marks.isDeleted,subjects.subjectcode,subjects.subjectname,subjects.partno"
 						+ " ,subjects.cia_markmax, subjects.se_markmax, subjects.credit "
 						+ "from students "
 						+ "join course on students.course_code = course.coursecode "
@@ -49,9 +49,11 @@ public class MarkSearchServlet extends HttpServlet {
 						+ "join subjects on subjects.subjectcode = marks.subject_code "
 						+ "where "
 						+ "students.enroll_id = ?"
-						+ " order  by marks.semster,subjects.partno"
+					//	+ " and marks.isDeleted=?"
+						+ " order  by marks.semester,subjects.partno"
 						);
 				   ps.setString(1,  request.getParameter("enroll_id"));
+				  // ps.setString(2, "N");
 				    rs = ps.executeQuery(); 
 				    
 				    MarkSheet marksheet = new MarkSheet();
@@ -75,7 +77,7 @@ public class MarkSearchServlet extends HttpServlet {
 
                         mark.setStudentId(rs.getInt("student_id"));
                        
-                        mark.setSemester(rs.getString("semster"));
+                        mark.setSemester(rs.getString("semester"));
                         mark.setExamDate(rs.getString("exam_date"));
                         mark.setCiaMark(rs.getInt("cia_mark"));
                         mark.setSeMark(rs.getInt("se_mark"));
@@ -83,6 +85,7 @@ public class MarkSearchServlet extends HttpServlet {
                         mark.setSubGradePoint(rs.getInt("sub_gradepoint"));
                         mark.setGrade(rs.getString("grade"));
                         mark.setResult(rs.getString("result"));
+                        mark.setIsDeleted(rs.getString("isDeleted"));
             
 		               
 		                subject.setSubjectCode(rs.getString("subjectcode"));

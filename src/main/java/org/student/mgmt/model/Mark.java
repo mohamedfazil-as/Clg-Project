@@ -11,6 +11,7 @@ public class Mark {
     private double subGradePoint;
     private String grade;
     private String result;
+    private String isDeleted;
 
     // Getters and Setters
     public int getStudentId() {
@@ -92,13 +93,25 @@ public class Mark {
     public void setResult(String result) {
         this.result = result;
     }
+    
+
+	public String getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(String isDeleted) {
+		this.isDeleted = isDeleted;
+	}
 
 	@Override
 	public String toString() {
 		return "Mark [studentId=" + studentId + ", subject=" + subject + ", semester=" + semester + ", examDate="
 				+ examDate + ", ciaMark=" + ciaMark + ", seMark=" + seMark + ", subjectTotal=" + subjectTotal
-				+ ", subGradePoint=" + subGradePoint + ", grade=" + grade + ", result=" + result + "]";
+				+ ", subGradePoint=" + subGradePoint + ", grade=" + grade + ", result=" + result + ", isDeleted="
+				+ isDeleted + "]";
 	}
+
+	
 
 
 }

@@ -45,7 +45,7 @@ public class GetMarkByStudent extends HttpServlet {
 	             		+ "from  marks "
 	             		+ "join subjects "
 	             		+ "on subjects.subjectcode = marks.subject_code "
-	             		+ "where marks.student_id=? and marks.subject_code=? and marks.semster=?");
+	             		+ "where marks.student_id=? and marks.subject_code=? and marks.semester=?");
 	            ps.setString(2, request.getParameter("subjectCode"));
 	            ps.setInt(1,Integer.parseInt(request.getParameter("studentId")));
 	            
@@ -65,7 +65,7 @@ public class GetMarkByStudent extends HttpServlet {
 	            	subject.setPartNo(rs.getString("partno"));
 	            	mark.setSubject(subject) ;
 	            	mark.setStudentId(rs.getInt("student_id")) ;	            
-	            	mark.setSemester(rs.getString("semster"));
+	            	mark.setSemester(rs.getString("semester"));
 	            	mark.setExamDate(rs.getString("exam_date"));
 	            	mark.setCiaMark(rs.getInt("cia_mark"));
 	            	mark.setSeMark(rs.getInt("se_mark")) ;

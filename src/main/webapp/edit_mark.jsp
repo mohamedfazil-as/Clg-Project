@@ -145,8 +145,8 @@
                 <input type="text" id="semster" name="semster" required>
             </div>  --> 
           <div class="form-group">
-            <label for="semster">Semster  </label>
-                <input type="text" id="semster" name="semster" readonly value ="${mark.semester}">
+            <label for="semester">Semester  </label>
+                <input type="text" id="semester" name="semester" readonly value ="${mark.semester}">
    <!--     <select id ="semster" name="semster" class="btn btn-primary dropdown-toggle" aria-label="Default select example">
             <option selected>Select Semster</option>
             <option value="1">Semster-I</option>
@@ -161,8 +161,9 @@
          
 
 <div class="form-group">
-    <label for="subject">Subject</label>
-     <input type="text" id="subject" name="subject" readonly value ="${mark.subject.subjectCode}-${mark.subject.subjectName}">
+    <label for="subject_code">Subject</label>
+     <input type="text" id="subject_code" name="subject_code" hidden value ="${mark.subject.subjectCode}">
+     <label for="subject_code">${mark.subject.subjectCode}-${mark.subject.subjectName}</label>
    <!--  <select id="subjectname" name="subjectname" class="form-control" onchange="updateSubjectDetails()" required>
         <option value="">Select Subject </option>
         <c:forEach items="${subjectList}" var="subject">

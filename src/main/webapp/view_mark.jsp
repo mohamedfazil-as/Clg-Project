@@ -97,12 +97,12 @@
             <th>Subject Code</th>
             <th>Subject Name</th>
             <th>Part</th>
-             <th>Semster</th>
+             <th>Semester</th>
             <th>Exam Date</th>
             <th>CIA Max Mark</th>
             <th>CIA Mark</th>
-             <th>Semster Max Mark</th>
-            <th>Semster Mark</th>
+             <th>Semester Max Mark</th>
+            <th>Semester Mark</th>
              <th>Total Max Mark</th>
             <th>Subject Total Mark</th>
             <th>Credits</th>
@@ -118,6 +118,7 @@
        
         <%-- Add rows dynamically as needed --%>
            <c:forEach items="${marksheet.mark}" var="mark">
+            <c:if test="${mark.isDeleted=='N'}">
             <tr>
                   <td> ${mark.subject.subjectCode }</td>
                  <td> ${mark.subject.subjectName }</td>
@@ -139,6 +140,7 @@
                             <a href="DeleteMarkServlet?enrollId=${marksheet.student.enrollId}&studentId=${marksheet.student.id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
    </tr>
+   </c:if>
 </c:forEach>
         
         </tbody>
